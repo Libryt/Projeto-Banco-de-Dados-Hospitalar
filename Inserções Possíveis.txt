@@ -1,0 +1,34 @@
+-- Inserindo Especialidades
+INSERT INTO Especialidade (nome_especialidade) VALUES ('Especialidade');
+
+-- Inserindo Médicos
+INSERT INTO Medico (nome_medico, cpf_medico, crm, id_especialidade) 
+VALUES ('Nome Médico Exemplo', '12345678901', 'CRM1234', 1);  -- Especialidade 1 (Especialidade)
+
+-- Inserindo Enfermeiros
+INSERT INTO Enfermeiro (nome_enfermeiro, cpf_enfermeiro, cre) 
+VALUES ('Nome Enfermeiro Exemplo', '12345678901', 'CRE5678');
+
+-- Inserindo Pacientes
+INSERT INTO Paciente (nome_paciente, dtnasc_paciente, cpf_paciente, rg_paciente, email_paciente) 
+VALUES ('Nome Paciente', '1985-04-12', '12345678901', '012345678', 'paciente@email.com');
+
+-- Inserindo Endereços
+INSERT INTO Endereco (logradouro, cep, bairro, cidade, estado, paciente_fk) 
+VALUES ('Rua A', '12345678', 'Centro', 'Rio de Janeiro', 'RJ', 1);  -- Paciente 1 (Nome Paciente)
+
+-- Inserindo Telefones
+INSERT INTO Telefone (ddd, numero, paciente_fk) 
+VALUES ('21', '912345678', 1);  -- Paciente 1
+
+-- Inserindo Consultas
+INSERT INTO Consulta (data_consulta, hora_consulta, medico_fk, paciente_fk) 
+VALUES ('2024-11-05', '10:30:00', 1, 1);  -- Médico 1, Paciente 1
+
+-- Inserindo Internações
+INSERT INTO Internacao (data_entrada, data_prev_alta, paciente_fk, medico_fk) 
+VALUES ('2024-10-25', '2024-11-10', 1, 1);  -- Paciente 1, Médico 1
+
+-- Inserindo Plantões
+INSERT INTO Plantao (data_plantao, hora_plantao, enfermeiro_fk, internacao_fk) 
+VALUES ('2024-10-30', '08:00:00', 1, 1);  -- Enfermeiro 1, Internação 1
