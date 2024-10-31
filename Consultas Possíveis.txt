@@ -1,0 +1,63 @@
+1-Consultar todos os médicos e suas especialidades:
+
+SELECT 
+    m.nome_medico, 
+    e.nome_especialidade 
+FROM 
+    Medico m
+JOIN 
+    Especialidade e ON m.id_especialidade = e.id_especialidade;
+
+2-Listar todas as consultas de um paciente específico:
+
+SELECT 
+    c.data_consulta, 
+    c.hora_consulta, 
+    m.nome_medico 
+FROM 
+    Consulta c
+JOIN 
+    Medico m ON c.medico_fk = m.id_medico
+WHERE 
+    c.paciente_fk = 1;
+
+3-Verificar os detalhes das internações de um determinado paciente:
+
+SELECT 
+    i.data_entrada, 
+    i.data_prev_alta, 
+    i.data_efet_alta, 
+    m.nome_medico 
+FROM 
+    Internacao i
+JOIN 
+    Medico m ON i.medico_fk = m.id_medico
+WHERE 
+    i.paciente_fk = 1;
+
+4-Obter todos os contatos de um paciente específico:
+
+SELECT 
+    t.ddd, 
+    t.numero 
+FROM 
+    Telefone t
+WHERE 
+    t.paciente_fk = 1;
+
+5-Listar todos os plantões realizados por um determinado enfermeiro:
+
+SELECT 
+    p.data_plantao, 
+    p.hora_plantao, 
+    i.data_entrada AS data_internacao, 
+    i.data_prev_alta 
+FROM 
+    Plantao p
+JOIN 
+    Internacao i ON p.internacao_fk = i.id_internacao
+WHERE 
+    p.enfermeiro_fk = 1;
+
+
+
